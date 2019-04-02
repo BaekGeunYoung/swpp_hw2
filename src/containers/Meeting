@@ -1,0 +1,20 @@
+import { connect } from 'react-redux'
+import Meeting from '../components/atoms/Meeting'
+import { httpDelete } from '../store/Meeting/actions';
+
+const mapStateToProps = (state) => {
+  return {
+    username: state.User.username,
+    password: state.User.password,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteMeeting: (id, headerContent) => {
+      dispatch(httpDelete(id, headerContent))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Meeting)
